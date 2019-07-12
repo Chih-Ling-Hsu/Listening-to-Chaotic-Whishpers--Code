@@ -14,6 +14,9 @@ from sklearn.preprocessing import OneHotEncoder
 from keras.models import load_model
 import sqlite3
 
+def ensure_dir(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
 
 ROOT = '.'
 companyList = ['AAPL', 'AMZN', 'BIDU', 'GOOG', 'MSFT', 'NFLX']
