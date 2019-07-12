@@ -60,6 +60,7 @@ class BaseDataLoader(DataLoader):
 class HANDataset(Dataset):
     def __init__(self, ROOT, firm, date_range=None, metric='Trend', k=5, tau=[-3, 3], n=11, 
                  l_max=40, doc2vec_dim=200):
+        self.root = ROOT
         self.data_dir = os.path.join(ROOT, 'saved', firm)
         self.firm = firm
         self.date_range = date_range
@@ -99,7 +100,7 @@ class HANDataset(Dataset):
 
     def init(self):
         # Load Stock price time series
-        info = pd.read_csv('{}/num_data/{}.csv'.format(ROOT, self.firm))
+        info = pd.read_csv('{}/num_data/{}.csv'.format(self.root, self.firm))
 
         info['LargestPosChange'] = self.calc_largest_change(self.k, 'positive', info)
         info['LargestNegChange'] = self.calc_largest_change(self.k, 'negative', info)
@@ -138,9 +139,9 @@ class HANDataset(Dataset):
     
     def prepare(self):  
         ensure_dir(self.data_dir) 
-        model = Doc2Vec.load(os.path.join(ROOT, 'saved', 'd2v.model'))
+        model = Doc2Vec.load(os.path.join(self.root, 'saved', 'd2v.model'))
         
-        with open('{}/text_data/{}.json'.format(ROOT, firm), 'r') as f:  
+        with open('{}/text_data/{}.json'.format(self.root, firm), 'r') as f:  
             text_data_info = json.load(f)
         
         start = datetime.strptime(self.dateList[0], '%Y-%m-%d') - timedelta(days=self.n)
