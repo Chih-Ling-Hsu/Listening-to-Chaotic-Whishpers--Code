@@ -70,6 +70,7 @@ class HANDataset(Dataset):
         self.n = n
         self.l_max = l_max
         self.doc2vec_dim = doc2vec_dim
+        self.classLabels = ['flat', 'rise', 'fall']  
 
         self.init()
         
