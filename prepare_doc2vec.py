@@ -1,4 +1,4 @@
-from util import *
+from .util import *
 
 def prepare_data(companyList):
     data = []
@@ -30,6 +30,6 @@ def train_doc2vec_model(tagged_data, save_path, max_epochs=15, vec_size=200, alp
 
     model.save(save_path)
 
-
-tagged_data = prepare_data(companyList)
-train_doc2vec_model(tagged_data, '{}/saved/d2v.model'.format(ROOT), max_epochs=15, vec_size=200, alpha=0.025)
+if __name__ == '__main__':
+    tagged_data = prepare_data(companyList)
+    train_doc2vec_model(tagged_data, '{}/saved/d2v.model'.format(ROOT), max_epochs=15, vec_size=200, alpha=0.025)

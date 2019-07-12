@@ -1,4 +1,4 @@
-from util import *
+from .util import *
 
 def train(firm, date_range, metric, k, tau, n_epochs=60):
     enc = OneHotEncoder(handle_unknown='ignore')

@@ -1,4 +1,4 @@
-from util import *
+from .util import *
 
 def test(mdl_pth, firm, date_range, metric, k, tau):  
     data_loader = HANDataLoader(firm=firm, date_range=date_range, metric=metric, k=k, tau=tau, 

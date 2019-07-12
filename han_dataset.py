@@ -1,4 +1,4 @@
-from util import *
+from .util import *
 
 class HANDataset(Dataset):
     def __init__(self, firm, date_range=None, metric='Trend', k=5, tau=[-3, 3], n=11, 
