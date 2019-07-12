@@ -81,5 +81,6 @@ def get_text_info_per_day(firm, start='2018-07-04', end='2018-11-30'):
     with open('{}/text_data/{}.json'.format(ROOT, firm), 'w') as f:  
         json.dump(text_data_info, f)
 
-for firm in companyList:
-    get_text_info_per_day(firm, start=date_range['train'][0], end=date_range['test'][1])
+if __name__ == '__main__':
+    for firm in companyList:
+        get_text_info_per_day(firm, start=date_range['train'][0], end=date_range['test'][1])
