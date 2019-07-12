@@ -14,6 +14,7 @@ from nltk.tokenize import word_tokenize
 from sklearn.preprocessing import OneHotEncoder
 from keras.models import load_model
 import sqlite3
+import numpy as np
 
 def ensure_dir(path):
     if not os.path.exists(path):
