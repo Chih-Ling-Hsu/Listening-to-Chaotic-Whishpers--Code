@@ -142,7 +142,7 @@ class HANDataset(Dataset):
         ensure_dir(self.data_dir) 
         model = Doc2Vec.load(os.path.join(self.root, 'saved', 'd2v.model'))
         
-        with open('{}/text_data/{}.json'.format(self.root, firm), 'r') as f:  
+        with open('{}/text_data/{}.json'.format(self.root, self.firm), 'r') as f:  
             text_data_info = json.load(f)
         
         start = datetime.strptime(self.dateList[0], '%Y-%m-%d') - timedelta(days=self.n)
