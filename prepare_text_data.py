@@ -60,7 +60,7 @@ def fetchPostGroup(firm, TABLE_NAME='tweets', date='2018-08-10', do_filter=False
     df = _fetch_posts(firm, TABLE_NAME, _min, _max, do_filter)    
     return df
 
-def get_text_info_per_day(firm, start='2018-07-04', end='2018-11-30'):
+def get_text_info_per_day(ROOT, firm, start='2018-07-04', end='2018-11-30'):
     text_data_info = {}
     
     dr = [str(d.date()) for d in pd.date_range(start=start, end=end)]
@@ -83,4 +83,4 @@ def get_text_info_per_day(firm, start='2018-07-04', end='2018-11-30'):
 
 if __name__ == '__main__':
     for firm in companyList:
-        get_text_info_per_day(firm, start=date_range['train'][0], end=date_range['test'][1])
+        get_text_info_per_day(ROOT, firm, start=date_range['train'][0], end=date_range['test'][1])
