@@ -6,6 +6,7 @@ from dateutil.relativedelta import relativedelta
 import pytz
 from tqdm import tqdm
 import os
+from functools import reduce, partial
 
 import pandas as pd
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
