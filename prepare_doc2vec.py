@@ -1,6 +1,6 @@
 from .util import *
 
-def prepare_data(companyList):
+def prepare_data(ROOT, companyList):
     data = []
     tag = []
     i = 0
@@ -16,7 +16,7 @@ def prepare_data(companyList):
     return [TaggedDocument(words=word_tokenize(str(_d.lower())), tags=[_t]) for _d, _t in zip(data, tag)]
 
 
-def train_doc2vec_model(tagged_data, save_path, max_epochs=15, vec_size=200, alpha=0.025):
+def train_doc2vec_model(ROOT, tagged_data, save_path, max_epochs=15, vec_size=200, alpha=0.025):
     model = Doc2Vec(vector_size=vec_size, alpha=alpha, min_alpha=0.025, min_count=5, dm=1, workers=16)
     model.build_vocab(tagged_data)
     

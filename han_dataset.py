@@ -58,7 +58,7 @@ class BaseDataLoader(DataLoader):
             return DataLoader(sampler=self.valid_sampler, **self.init_kwargs)
 
 class HANDataset(Dataset):
-    def __init__(self, firm, date_range=None, metric='Trend', k=5, tau=[-3, 3], n=11, 
+    def __init__(self, ROOT, firm, date_range=None, metric='Trend', k=5, tau=[-3, 3], n=11, 
                  l_max=40, doc2vec_dim=200):
         self.data_dir = os.path.join(ROOT, 'saved', firm)
         self.firm = firm
@@ -185,7 +185,7 @@ class HANDataset(Dataset):
             return PC
     
 class HANDataLoader(BaseDataLoader):
-    def __init__(self, firm, date_range, metric, k, tau, n=11,
+    def __init__(self, ROOT, firm, date_range, metric, k, tau, n=11,
                  batch_size=8, shuffle=False, validation_split=0.0, num_workers=4):
-        self.dataset = HANDataset(firm, date_range=date_range, metric=metric, k=k, tau=tau, n=n)
+        self.dataset = HANDataset(ROOT, firm, date_range=date_range, metric=metric, k=k, tau=tau, n=n)
         super(HANDataLoader, self).__init__(self.dataset, batch_size, shuffle, validation_split, num_workers)
