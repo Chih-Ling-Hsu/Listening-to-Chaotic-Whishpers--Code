@@ -115,6 +115,7 @@ class HANDataset(Dataset):
             
         # Trend classes 
         info['Trend'] = [self._get_label(LPC) for LPC in info['LargestPercentageChange']]
+        info['isTrend'] = [int(not math.isnan(i) and self.classLabels[int(i)] != 'flat') for i in info['Trend']] 
 
         self.info = info
         self.dateList = [x for x in self.info['Date'] if ((x >= self.date_range[0]) & (x <= self.date_range[1]))]
